@@ -1,8 +1,8 @@
 # Header
 menu:
   首页: /
-  归档: /life/archives
-  分类: /life/categories
+  归档: /archives
+  分类: /categories
 #rss: /atom.xml
 
 # Content
@@ -19,7 +19,7 @@ favicon:
 search_enable: false
 
 # Hosted by xxxx
-coderignt: true
+coderignt: false
 
 # Tencent analytics ID
 #tencent_analytics:
