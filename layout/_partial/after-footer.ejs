@@ -1,24 +1,19 @@
-<% if (config.disqus_shortname){ %>
-<script>
-  var disqus_shortname = '<%= config.disqus_shortname %>';
-  <% if (page.permalink){ %>
-  var disqus_url = '<%= page.permalink %>';
-  <% } %>
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//go.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<% } %>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <% if (theme.fancybox){ %>
 <link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<% } %>
+
+<% if (theme.aplayer){ %>
+	<% page.categories && page.categories.forEach(function(category){ %>
+		<% if (category.name == "音乐") { %>
+			<!-- https://github.com/MoePlayer/APlayer-Typecho -->
+			<link rel="stylesheet" href="<%- config.root %>aplayer/APlayer.min.css">
+			<script src="<%- config.root %>aplayer/APlayer.min.js"></script>
+			<script src="<%- config.root %>aplayer/Meting.min.js"></script>
+		<% } %>
+	<% }) %>
 <% } %>
 
 <%- js('js/script') %>

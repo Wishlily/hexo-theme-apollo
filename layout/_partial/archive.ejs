@@ -5,8 +5,8 @@
   <% if (page.total > 1){ %>
     <nav id="page-nav">
       <%- paginator({
-        prev_text: '&laquo; Prev',
-        next_text: 'Next &raquo;'
+        prev_text: '&laquo; 上一页',
+        next_text: '下一页 &raquo;'
       }) %>
     </nav>
   <% } %>
@@ -32,7 +32,7 @@
                 <h1><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h1>
               <% } %>
             <% } else { %>
-                <h1>(No title)</h1>
+                <h1>无题</h1>
             <% } %>
           </header>
         </div>
