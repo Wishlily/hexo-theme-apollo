@@ -1,1 +1,7 @@
+<% if (page.type == 'categories') { %>
+	<%- list_categories({
+      show_count: true
+    }) %>
+<% } %>
+
 <%- partial('_partial/article', {post: page, index: false}) %>

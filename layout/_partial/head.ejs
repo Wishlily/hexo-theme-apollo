@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% if (!theme.search_enable) { %>
+    <meta name="robots" content="noindex">
+  <% } %>
   <meta charset="utf-8">
   <%
   var title = page.title;

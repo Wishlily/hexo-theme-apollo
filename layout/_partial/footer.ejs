@@ -1,16 +1,49 @@
-<div class="mb-search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="<%= __('Search') %>">
-    <input type="hidden" name="q" value="site:<%- config.url.replace(/^https?:\/\//, '') %>">
-  </form>
-</div>
+<% if (theme.search_enable) { %>
+	<div class="mb-search">
+		<form action="//google.com/search" method="get" accept-charset="utf-8">
+			<input type="search" name="q" results="0" placeholder="<%= __('Search') %>">
+			<input type="hidden" name="q" value="site:<%- config.url.replace(/^https?:\/\//, '') %>">
+		</form>
+	</div>
+<% } %>
+
 <footer id="footer">
 	<h1 class="footer-blog-title">
 		<a href="<%- config.root %>"><%= config.title %></a>
 	</h1>
 	<span class="copyright">
-		&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
+		<% if (theme.coderignt){ %>
+			Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+		<% } %>
+		<% if (theme.since && theme.since != date(new Date(), 'YYYY')){ %>
+			&copy; <%= theme.since %> - <%= date(new Date(), 'YYYY') %> &bull; <%= config.author || config.title %><br>
+		<% } else { %>
+			&copy; <%= date(new Date(), 'YYYY') %> &bull; <%= config.author || config.title %><br>
+		<% } %>
+
 		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+		<a id="translateLink" href="javascript:translatePage();">繁體</a>
+		<script type="text/javascript" src="<%- config.root %>js/tw_cn.js"></script>
+		<script type="text/javascript">
+			var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+			var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+			var cookieDomain = "http://wishlily.coding.me/"; //Cookie地址, 一定要设定, 通常为你的网址
+			var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+			var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+			var translateButtonId = "translateLink"; //默认互换id
+			translateInitilization();
+		</script>
 	</span>
 </footer>
+
+<% if (theme.tencent_analytics){ %>
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=<%= theme.tencent_analytics %>" charset="UTF-8"></script>
+<% } %>
+
+<% if (theme.cnzz_siteid){ %>
+	<div style="display: none;">
+		<script src="https://s11.cnzz.com/z_stat.php?id=<%= theme.cnzz_siteid %>&web_id=<%= theme.cnzz_siteid %>" language="JavaScript"></script>
+	</div>
+<% } %>
